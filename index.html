@@ -169,17 +169,16 @@
   }
   .hero-center p strong{ color:var(--text); font-weight:600; }
 
-  .scroll-cue{
-    position:absolute; bottom:110px; left:50%; transform:translateX(-50%);
-    z-index:6; font-family:'IBM Plex Mono', monospace; font-size:0.62rem;
-    color:var(--text-dim); letter-spacing:0.18em; text-transform:uppercase;
-    display:flex; flex-direction:column; align-items:center; gap:6px; opacity:0.7;
-  }
-  .scroll-cue .line{ width:1px; height:30px; background:var(--text-dim); animation:pulse 2s ease-in-out infinite; }
-  @keyframes pulse{ 0%,100%{opacity:0.15;} 50%{opacity:0.85;} }
-
   /* ---------- SECTIONS ---------- */
   section{ padding:120px 0; position:relative; }
+  section:not(.hero)::before{
+    content:''; position:absolute; top:0; left:0; right:0; height:1px;
+    background:linear-gradient(90deg, transparent, var(--line-strong) 50%, transparent);
+  }
+  #about{ background:linear-gradient(180deg, #0a0a0a, #0d0d0f 55%, #0a0a0a); }
+  #work{ background:linear-gradient(180deg, #0a0a0a, #0f0e0c 50%, #0a0a0a); }
+  #experience{ background:linear-gradient(180deg, #0a0a0a, #0c0d0e 50%, #0a0a0a); }
+  #contact{ background:linear-gradient(180deg, #0a0a0a, #100e0e 55%, #0a0a0a); }
   .section-head{ margin-bottom:56px; }
   .section-head .eyebrow{ margin-bottom:14px; display:inline-block; }
   .section-head h2{ font-size:clamp(2rem, 4.5vw, 3rem); }
@@ -356,7 +355,6 @@
     .hero-inner{ max-width:320px; }
     .hero-day .hero-inner, .hero-night .hero-inner{ text-align:left; margin-left:0; }
     .hero-layer{ padding-bottom:150px; }
-    .scroll-cue{ display:none; }
   }
 
   /* Phones */
@@ -429,7 +427,6 @@
     </p>
   </div>
 
-  <div class="scroll-cue"><div class="line"></div></div>
 </section>
 
 <!-- ABOUT -->
@@ -487,8 +484,8 @@
       <h2>A few frames, for now.</h2>
     </div>
     <div class="work-note">
-      Full case studies are still being written up. In the meantime, the fuller archive lives on
-      <a href="https://www.instagram.com/uncle_rappp" target="_blank" rel="noopener">Instagram</a>.
+      Case studies are still in the oven. In the meantime, feel free to
+      <a href="https://www.instagram.com/uncle_rappp" target="_blank" rel="noopener">stalk my Instagram</a> — I won't judge.
     </div>
     <div class="gallery">
       <figure>
@@ -499,7 +496,6 @@
       </figure>
       <figure>
         <img src="https://ralphdotph.wordpress.com/wp-content/uploads/2024/04/435247064_1481755632686919_3094190804196182968_n.jpg" alt="Editing" loading="lazy">
-        <figcaption>Photo</figcaption>
       </figure>
       <figure>
         <img src="https://ralphdotph.wordpress.com/wp-content/uploads/2024/04/434760546_1456532185226924_5408828822817850325_n.jpg" alt="Photography" loading="lazy">
@@ -555,7 +551,7 @@
     <div class="contact-grid">
       <div>
         <span class="eyebrow">Inquire</span>
-        <h2>Let's build or shoot something.</h2>
+        <h2>Let's build something creative.</h2>
         <p class="lead">Open to IT/support roles, and to photo, video, or layout collaborations. Based in the Philippines, working with people anywhere.</p>
         <a class="btn" href="mailto:maullionralph@gmail.com">Email Ralph →</a>
         <div class="social-row">
