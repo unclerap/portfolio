@@ -130,9 +130,6 @@
     content:''; position:absolute; inset:0;
     background:linear-gradient(180deg, rgba(10,10,10,0.2), rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.96));
   }
-  @media (max-width:860px){
-    .hero-night-photo{ width:100%; max-width:none; }
-  }
   .hero-inner{ max-width:440px; }
   .hero-night .hero-inner{ text-align:right; margin-left:auto; }
   .hero-inner h2{ font-size:clamp(1.4rem, 3vw, 2rem); color:var(--text); margin-top:10px; font-weight:700; }
@@ -363,10 +360,11 @@
     nav ul{
       display:flex; flex-direction:column; align-items:flex-start;
       gap:30px; list-style:none;
-      position:fixed; top:0; right:0; height:100vh; width:min(78vw,320px);
+      position:fixed; top:0; right:0; height:100vh; height:100dvh; width:min(78vw,320px);
       background:var(--ink); border-left:1px solid var(--line);
       padding:100px 32px 40px; margin:0; z-index:60;
       transform:translateX(100%); transition:transform .35s cubic-bezier(.22,1,.36,1);
+      overflow-y:auto;
     }
     nav ul.open{ transform:translateX(0); }
     nav ul li a{ font-size:0.9rem; }
@@ -654,6 +652,7 @@
   window.addEventListener('resize', () => {
     if (window.innerWidth > 860) closeMenu();
   });
+  window.addEventListener('orientationchange', closeMenu);
 </script>
 
 </body>
