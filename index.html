@@ -29,7 +29,7 @@
     position:relative;
   }
   ::selection{ background:var(--text); color:var(--ink); }
-  h1,h2,h3{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; letter-spacing:0.01em; text-transform:uppercase; }
+  h1,h2,h3{ font-family:'Big Shoulders Display', sans-serif; font-weight:800; letter-spacing:0.01em; text-transform:uppercase; color:var(--text); }
   a{ color:inherit; text-decoration:none; }
   img{ max-width:100%; display:block; }
 
@@ -178,7 +178,34 @@
   #about{ background:linear-gradient(180deg, #0a0a0a, #0d0d0f 55%, #0a0a0a); }
   #work{ background:linear-gradient(180deg, #0a0a0a, #0f0e0c 50%, #0a0a0a); }
   #experience{ background:linear-gradient(180deg, #0a0a0a, #0c0d0e 50%, #0a0a0a); }
-  #contact{ background:linear-gradient(180deg, #0a0a0a, #100e0e 55%, #0a0a0a); }
+  #contact{
+    background:linear-gradient(180deg,
+      #0a0a0a 0px,
+      #0a0a0a 90px,
+      #333230 220px,
+      #6b6963 320px,
+      #b3b1a9 400px,
+      #e8e6de 460px,
+      #f4f3ef 520px,
+      #f4f3ef calc(100% - 520px),
+      #e8e6de calc(100% - 460px),
+      #b3b1a9 calc(100% - 400px),
+      #6b6963 calc(100% - 320px),
+      #333230 calc(100% - 220px),
+      #0a0a0a calc(100% - 90px),
+      #0a0a0a 100%
+    );
+  }
+  #contact h2, #contact .eyebrow, #contact .lead, #contact p, #contact .info-list, #contact .info-list span:first-child, #contact .social-row a{
+    color:#f4f3ef !important;
+  }
+  #contact .eyebrow::before, #contact .eyebrow::after{ color:#f4f3ef; }
+  #contact .info-list div{ border-bottom-color:rgba(244,243,239,0.18); }
+  #contact .social-row a{ border-color:rgba(244,243,239,0.32); }
+  #contact .social-row a:hover{ color:#fff !important; border-color:#fff; }
+  #contact .btn{ background:#f4f3ef; color:#0a0a0a; }
+  #contact .btn:hover{ background:#fff; }
+  #contact::before{ background:linear-gradient(90deg, transparent, rgba(10,10,10,0.35) 50%, transparent); }
   .section-head{ margin-bottom:56px; }
   .section-head .eyebrow{ margin-bottom:14px; display:inline-block; }
   .section-head h2{ font-size:clamp(2rem, 4.5vw, 3rem); }
