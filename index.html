@@ -224,32 +224,37 @@
   #experience{ background:linear-gradient(180deg, #0a0a0a, #0c0d0e 50%, #0a0a0a); }
   #contact{
     background:linear-gradient(180deg,
-      #0a0a0a 0px,
-      #0a0a0a 90px,
-      #333230 220px,
-      #6b6963 320px,
-      #b3b1a9 400px,
-      #e8e6de 460px,
-      #f4f3ef 520px,
-      #f4f3ef calc(100% - 520px),
-      #e8e6de calc(100% - 460px),
-      #b3b1a9 calc(100% - 400px),
-      #6b6963 calc(100% - 320px),
-      #333230 calc(100% - 220px),
-      #0a0a0a calc(100% - 90px),
+      #0a0a0a 0%,
+      #0a0a0a 8%,
+      #333230 18%,
+      #6b6963 26%,
+      #b3b1a9 34%,
+      #e8e6de 40%,
+      #f4f3ef 46%,
+      #f4f3ef 54%,
+      #e8e6de 60%,
+      #b3b1a9 66%,
+      #6b6963 74%,
+      #333230 82%,
+      #0a0a0a 92%,
       #0a0a0a 100%
     );
+    min-height:600px;
   }
-  #contact h2, #contact .eyebrow, #contact .info-list, #contact .info-list span:first-child, #contact .social-row a{
-    color:#f4f3ef !important;
+  #contact h2, #contact .eyebrow, #contact .lead, #contact .info-list, #contact .social-row a, #contact .copy-email{
+    color:#0a0a0a !important;
   }
-  #contact .lead{ color:#0a0a0a !important; }
-  #contact .eyebrow::before, #contact .eyebrow::after{ color:#f4f3ef; }
-  #contact .info-list div{ border-bottom-color:rgba(244,243,239,0.18); }
-  #contact .social-row a{ border-color:rgba(244,243,239,0.32); }
-  #contact .social-row a:hover{ color:#fff !important; border-color:#fff; }
-  #contact .btn{ background:#f4f3ef; color:#0a0a0a; }
-  #contact .btn:hover{ background:#fff; }
+  #contact .eyebrow::before, #contact .eyebrow::after{ color:#0a0a0a; }
+  #contact .info-list div{ border-bottom-color:rgba(10,10,10,0.18); }
+  #contact .social-row a{ border-color:rgba(10,10,10,0.32); }
+  #contact .social-row a:hover{ color:#000 !important; border-color:#000; }
+  #contact .copy-email{ border-bottom-color:rgba(10,10,10,0.32); }
+  #contact .copy-email:hover{ color:#000 !important; border-color:#000; }
+  #contact .btn{ background:#0a0a0a; color:#f4f3ef; }
+  #contact .btn:hover{ background:#1a1a1a; }
+  #contact .info-list{ font-weight:700; }
+  #contact .info-list span:first-child{ font-weight:700; color:#0a0a0a; }
+  #contact .info-list span:last-child{ font-weight:700; color:#0a0a0a; }
   #contact::before{ background:linear-gradient(90deg, transparent, rgba(10,10,10,0.35) 50%, transparent); }
   .section-head{ margin-bottom:56px; }
   .section-head .eyebrow{ margin-bottom:14px; display:inline-block; }
@@ -664,9 +669,14 @@
         </div>
       </div>
       <div class="info-list">
-        <div><span>Location</span><span>Batangas 4209</span></div>
-        <div><span>Location</span><span>Muntinlupa 1780</span></div>
-        <div><span>Role</span><span>Tier 2 Support, Five Acts Services Corp.</span></div>
+        <div class="info-row">
+          <span class="info-label">Location</span>
+          <span class="info-value">Batangas 4209 · Muntinlupa 1780</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Role</span>
+          <span class="info-value">Tier 2 Support, Five Acts Services Corp.</span>
+        </div>
       </div>
     </div>
   </div>
