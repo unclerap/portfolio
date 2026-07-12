@@ -214,11 +214,12 @@
   .hero-center p strong{ color:var(--text); font-weight:600; }
   .fade-up-line{
     display:inline-block;
-    opacity:0; transform:translateY(18px);
-    animation:fadeUp .8s cubic-bezier(.22,1,.36,1) both;
+    animation:focusIn 1.1s cubic-bezier(.22,1,.36,1) both;
   }
-  @keyframes fadeUp{
-    to{ opacity:1; transform:translateY(0); }
+  @keyframes focusIn{
+    0%{ opacity:0; filter:blur(16px) contrast(0.5) brightness(1.4); transform:scale(1.04); }
+    60%{ opacity:1; }
+    100%{ opacity:1; filter:blur(0) contrast(1) brightness(1); transform:scale(1); }
   }
 
   /* ---------- SECTIONS ---------- */
