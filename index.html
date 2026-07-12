@@ -212,6 +212,14 @@
     to{ transform:translateY(0); opacity:1; }
   }
   .hero-center p strong{ color:var(--text); font-weight:600; }
+  .fade-up-line{
+    display:inline-block;
+    opacity:0; transform:translateY(18px);
+    animation:fadeUp .8s cubic-bezier(.22,1,.36,1) both;
+  }
+  @keyframes fadeUp{
+    to{ opacity:1; transform:translateY(0); }
+  }
 
   /* ---------- SECTIONS ---------- */
   section{ padding:120px 0; position:relative; }
@@ -484,8 +492,8 @@
 
   <div class="hero-center">
     <h1 style="text-transform:none;">
-      <span class="scramble-line" data-text="Hello."></span><br>
-      <span class="scramble-line" data-text="I am Ralph."></span>
+      <span class="fade-up-line" style="animation-delay:.05s;">Hello.</span><br>
+      <span class="fade-up-line" style="animation-delay:.25s;">I am Ralph.</span>
     </h1>
     <p>
       <span class="scramble-line" data-text="I am an IT by day, and an artist at night."></span><br>
