@@ -457,7 +457,7 @@
 <body>
 
 <nav id="mainNav">
-  <a class="logo" href="#hero"><img src="https://ralphdotph.wordpress.com/wp-content/uploads/2026/01/cropped-new-project-1-e1713423058743-edited.png" alt="Ralph Maullion logo"></a>
+  <a class="logo" href="#hero" id="logoLink"><img src="https://ralphdotph.wordpress.com/wp-content/uploads/2026/01/cropped-new-project-1-e1713423058743-edited.png" alt="Ralph Maullion logo"></a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line class="bar bar-top" x1="3" y1="7" x2="21" y2="7"/><line class="bar bar-mid" x1="3" y1="12" x2="21" y2="12"/><line class="bar bar-bot" x1="3" y1="17" x2="21" y2="17"/></svg>
   </button>
@@ -665,6 +665,15 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   });
+
+  // Logo click: scroll to top without adding #hero to the URL
+  const logoLink = document.getElementById('logoLink');
+  if (logoLink){
+    logoLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   // Binary rain effect (day/IT side of hero)
   (function(){
