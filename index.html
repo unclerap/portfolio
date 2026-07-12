@@ -661,31 +661,16 @@
 </footer>
 
 <script>
-  // Section path map: nav link -> clean URL path (no hash)
-  const SECTION_PATHS = { '#about': '/about', '#work': '/work', '#experience': '/experience', '#contact': '/inquire' };
-
-  // On load: honor a known section path (e.g. /about) by scrolling there.
-  // Any stray hash or unrecognized path resets to a clean home.
-  if ('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
-  const knownPath = Object.values(SECTION_PATHS).find(p => window.location.pathname === p);
-  if (window.location.hash){
-    history.replaceState(null, '', (knownPath || '/') + window.location.search);
-  }
-  if (!knownPath){
-    window.scrollTo(0, 0);
-  }
-
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  // Logo click: return to the true root URL and scroll to top
+  // Logo click: scroll to top without adding #hero to the URL
   const logoLink = document.getElementById('logoLink');
   if (logoLink){
     logoLink.addEventListener('click', (e) => {
       e.preventDefault();
-      history.pushState(null, '', '/');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
@@ -795,35 +780,6 @@
     }
   });
   navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-  // If loaded directly on a known section path (e.g. /about), scroll there
-  // once layout has settled (fonts/images can shift positions).
-  if (knownPath){
-    const hashFor = Object.keys(SECTION_PATHS).find(h => SECTION_PATHS[h] === knownPath);
-    window.addEventListener('load', () => {
-      const target = document.querySelector(hashFor);
-      if (target){
-        const top = target.getBoundingClientRect().top + window.pageYOffset - nav.offsetHeight;
-        window.scrollTo(0, top);
-      }
-    });
-  }
-
-  // Section nav links: smooth-scroll to target, offset for the fixed nav bar,
-  // and show a clean path (e.g. /about) in the address bar — no hash.
-  navMenu.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const targetId = link.getAttribute('href');
-      const target = document.querySelector(targetId);
-      if (!target) return;
-      e.preventDefault();
-      const navHeight = nav.offsetHeight;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-      window.scrollTo({ top, behavior: 'smooth' });
-      const path = SECTION_PATHS[targetId];
-      if (path) history.pushState(null, '', path);
-    });
-  });
   window.addEventListener('resize', () => {
     if (window.innerWidth > 860) closeMenu();
   });
