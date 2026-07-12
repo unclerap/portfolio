@@ -484,10 +484,13 @@
 
   <div class="hero-center">
     <h1 style="text-transform:none;">
-      <span class="reveal-line"><span style="animation-delay:.05s;">Hello.</span></span><span class="reveal-line"><span style="animation-delay:.2s;">I am Ralph.</span></span>
+      <span class="scramble-line" data-text="Hello."></span><br>
+      <span class="scramble-line" data-text="I am Ralph."></span>
     </h1>
     <p>
-      <span class="reveal-line"><span style="animation-delay:.4s;">I am an IT by day, and an artist at night.</span></span><span class="reveal-line"><span style="animation-delay:.55s;">Currently a Tier 2 Technical Support at</span></span><span class="reveal-line"><span style="animation-delay:.7s;"><strong>Five Acts Services Corp.</strong></span></span>
+      <span class="scramble-line" data-text="I am an IT by day, and an artist at night."></span><br>
+      <span class="scramble-line" data-text="Currently a Tier 2 Technical Support at"></span><br>
+      <span class="scramble-line" data-text="Five Acts Services Corp." style="color:var(--text); font-weight:600;"></span>
     </p>
   </div>
 
@@ -683,6 +686,40 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // Hero headline: terminal-style decode/scramble animation
+  (function(){
+    const lines = document.querySelectorAll('.scramble-line');
+    if (!lines.length) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const glyphs = '01#/\\<>[]{}%$&*';
+
+    function scramble(el, finalText, delay){
+      if (reduceMotion){ el.textContent = finalText; return; }
+      const frameMs = 32;
+      const totalFrames = Math.max(6, Math.round(finalText.length * 1.4));
+      let frame = 0;
+      setTimeout(() => {
+        const timer = setInterval(() => {
+          frame++;
+          const revealCount = Math.floor((frame / totalFrames) * finalText.length);
+          let out = '';
+          for (let i = 0; i < finalText.length; i++){
+            if (finalText[i] === ' '){ out += ' '; continue; }
+            out += i < revealCount ? finalText[i] : glyphs[Math.floor(Math.random() * glyphs.length)];
+          }
+          el.textContent = out;
+          if (frame >= totalFrames){
+            el.textContent = finalText;
+            clearInterval(timer);
+          }
+        }, frameMs);
+      }, delay);
+    }
+
+    const delays = [50, 250, 500, 700, 900];
+    lines.forEach((el, i) => scramble(el, el.dataset.text, delays[i] || i * 200));
+  })();
 
   // Binary rain effect (day/IT side of hero)
   (function(){
