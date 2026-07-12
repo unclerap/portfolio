@@ -661,16 +661,25 @@
 </footer>
 
 <script>
+  // Always land on a clean top-of-page on load/refresh, regardless of any
+  // section hash (#about, #work, etc.) left in the URL from prior navigation.
+  if ('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
+  if (window.location.hash){
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+  window.scrollTo(0, 0);
+
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  // Logo click: scroll to top without adding #hero to the URL
+  // Logo click: return to the clean root URL (no hash) and scroll to top
   const logoLink = document.getElementById('logoLink');
   if (logoLink){
     logoLink.addEventListener('click', (e) => {
       e.preventDefault();
+      history.pushState(null, '', window.location.pathname + window.location.search);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
