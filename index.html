@@ -228,10 +228,35 @@
     content:''; position:absolute; top:0; left:0; right:0; height:1px;
     background:linear-gradient(90deg, transparent, var(--line-strong) 50%, transparent);
   }
-  #about{ background:linear-gradient(180deg, #0a0a0a, #0d0d0f 55%, #0a0a0a); }
-  #work{ background:linear-gradient(180deg, #0a0a0a, #0f0e0c 50%, #0a0a0a); }
-  #experience{ background:linear-gradient(180deg, #0a0a0a, #0c0d0e 50%, #0a0a0a); }
-  #contact{ background:linear-gradient(180deg, #0a0a0a, #100e0e 55%, #0a0a0a); }
+  #about{
+    background:
+      linear-gradient(180deg, #0a0a0a, #0d0d0f 55%, #0a0a0a),
+      repeating-linear-gradient(90deg, rgba(238,236,230,0.09) 0 1px, transparent 1px 60px),
+      repeating-linear-gradient(0deg, rgba(238,236,230,0.09) 0 1px, transparent 1px 60px);
+  }
+  #work{
+    background:
+      linear-gradient(180deg, #0a0a0a, #0f0e0c 50%, #0a0a0a),
+      radial-gradient(circle, rgba(238,236,230,0.16) 1.4px, transparent 1.8px) 0 0/14px 14px;
+  }
+  #experience{
+    background:
+      linear-gradient(180deg, #0a0a0a, #0c0d0e 50%, #0a0a0a),
+      repeating-linear-gradient(180deg, rgba(238,236,230,0.06) 0 1px, transparent 1px 3px);
+  }
+  #contact{
+    background:
+      linear-gradient(180deg, #0a0a0a, #100e0e 55%, #0a0a0a);
+    position:relative;
+    overflow:hidden;
+  }
+  #contact::after{
+    content:''; position:absolute; right:-120px; top:50%; transform:translateY(-50%);
+    width:520px; height:520px; border-radius:50%;
+    border:1px solid rgba(238,236,230,0.14);
+    box-shadow:0 0 0 60px rgba(238,236,230,0.05) inset, 0 0 0 140px rgba(238,236,230,0.035) inset;
+    pointer-events:none;
+  }
   #contact .info-list{ font-weight:700; }
   #contact .info-list span:first-child{ font-weight:700; }
   #contact .info-list span:last-child{ font-weight:700; }
@@ -347,7 +372,7 @@
   .exp-card p{ color:var(--text-dim); font-size:0.96rem; max-width:640px; margin-bottom:18px; text-align:justify; }
 
   /* CONTACT */
-  .contact-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; }
+  .contact-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; position:relative; z-index:1; }
   .contact-grid h2{ font-size:clamp(2.2rem, 5.5vw, 3.6rem); margin-bottom:20px; }
   .contact-grid .lead{ color:var(--text-dim); max-width:440px; margin-bottom:32px; font-family:'Inter', sans-serif; text-transform:none; }
   .contact-grid .info-list{ margin-top:40px; }
